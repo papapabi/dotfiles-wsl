@@ -1,0 +1,7 @@
+[user]
+	name = Joshua Isaac D. Pabilona
+	email = pabilona.joshua@gmail.com
+[includeIf "gitdir:~/code/personal/"]
+	path = ~/code/personal/.gitconfig
+[includeIf "gitdir:~/code/work/"]
+	path = ~/code/work/.gitconfig
