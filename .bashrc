@@ -109,7 +109,7 @@ if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
 
-# enable programmable completion features (you don't need to enable
+# enable programmable completion features (you don't need to e
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
 if ! shopt -oq posix; then
@@ -118,6 +118,15 @@ if ! shopt -oq posix; then
   elif [ -f /etc/bash_completion ]; then
     . /etc/bash_completion
   fi
+fi
+
+# https://github.com/magicmonty/bash-git-prompt
+# To install, you must first clone the ff into your home directory:
+# $ git clone https://github.com/magicmonty/bash-git-prompt.git ~/.bash-git-prompt --depth=1
+# Then it has to be sourced by the ff:
+if [ -f "$HOME/.bash-git-prompt/gitprompt.sh" ]; then
+    GIT_PROMPT_ONLY_IN_REPO=1
+    source "$HOME/.bash-git-prompt/gitprompt.sh"
 fi
 
 # Load pyenv automatically; probably needs to be at the end of ~/.bashrc
