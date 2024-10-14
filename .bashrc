@@ -129,6 +129,26 @@ if [ -f "$HOME/.bash-git-prompt/gitprompt.sh" ]; then
     source "$HOME/.bash-git-prompt/gitprompt.sh"
 fi
 
+# Add github and adc remotes, with github as
+# the primary fetch target for remote 'all'.
+# args: name of the remote repository
+function add-remotes()
+{
+  git remote add github "git@github.com:papapabi/${1}.git"
+  git remote add adc "git@adc.github.trendmicro.com:joshuaisaac-pabilona/${1}.git"
+  git remote add all "git@github.com:papapabi/${1}.git"
+  git remote set-url --push --add all "git@adc.github.trendmicro.com:joshuaisaac-pabilona/${1}.git"
+  git remote set-url --push --add all "git@github.com:papapabi/${1}.git"
+  git remote -v
+}
+
+function clear-remotes()
+{
+  git remote rm github
+  git remote rm adc
+  git remote rm all
+}
+
 # Load pyenv automatically; probably needs to be at the end of ~/.bashrc
 export PYENV_ROOT="$HOME/.pyenv"
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
